@@ -442,7 +442,7 @@
     }
   });
 
-  /* ================= CONTACT FORM (FormSubmit AJAX) ================= */
+  /* ================= CONTACT FORM ================= */
   var form = $("#contactForm");
   if (form) {
     var sendBtn = $("#sendBtn");
@@ -480,14 +480,14 @@
       if (message.length < 10) { markInvalid(form.message); valid = false; }
 
       if (!valid) {
-        statusEl.textContent = "Please fill in all fields — name, a valid email, and a message (min 10 characters).";
+        statusEl.textContent = "Please fill in all fields correctly.";
         statusEl.className = "form-status err";
         return;
       }
 
       sending = true;
       setBtnState("sending");
-      statusEl.textContent = "Sending your message…";
+      statusEl.textContent = "Sending…";
       statusEl.className = "form-status";
 
       var payload = {
@@ -512,33 +512,20 @@
           return res.json();
         })
         .then(function (data) {
-          if (data && data.success === "false" && /activat/i.test(data.message || "")) {
-            throw new Error("ACTIVATION_REQUIRED");
-          }
           if (data && (data.success === "true" || data.success === true)) {
             setBtnState("sent");
-            statusEl.innerHTML = "✅ <strong>Message sent successfully!</strong> Thanks, " +
-              name.split(" ")[0].replace(/[<>&]/g, "") +
-              " — I'll get back to you at <b>" + email.replace(/[<>&]/g, "") + "</b> soon.";
+            statusEl.innerHTML = "✅ <strong>Message sent successfully! I'll get back to you soon.</strong>";
             statusEl.className = "form-status ok";
             form.reset();
             setTimeout(function () { setBtnState("idle"); sending = false; }, 3500);
           } else {
-            throw new Error("Service rejected the message");
+            throw new Error("failed");
           }
         })
-        .catch(function (err) {
+        .catch(function () {
           sending = false;
           setBtnState("idle");
-          if (err && err.message === "ACTIVATION_REQUIRED") {
-            statusEl.innerHTML = "📮 <strong>One-time setup needed:</strong> FormSubmit just emailed " +
-              "<b>gunss708@gmail.com</b> an “Activate Form” link. Click it once — after that this form sends messages directly to your inbox.";
-            statusEl.className = "form-status err";
-            return;
-          }
-          statusEl.innerHTML = "⚠️ Couldn't send automatically — no worries. " +
-            '<a href="mailto:gunss708@gmail.com?subject=' + encodeURIComponent("Portfolio contact from " + name) +
-            '">Click here to email me directly</a> instead.';
+          statusEl.textContent = "Something went wrong. Please try again or contact me directly.";
           statusEl.className = "form-status err";
         });
     });
