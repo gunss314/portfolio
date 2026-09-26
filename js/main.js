@@ -469,13 +469,15 @@
     var successBanner = $("#contact-form-success");
     var wasSentHere = false;
 
-    // Arriving back at #contact-form-success means FormSubmit accepted the
-    // POST and redirected us to _next — a genuine delivery confirmation.
-    if (successBanner && window.location.hash === "#contact-form-success") {
+    // FormSubmit's _next sends the visitor back to the site root after a
+    // successful, genuinely delivered POST. Detect that homecoming (fresh
+    // load, no ?v= cache-buster in the URL) and greet them with the banner.
+    if (successBanner && window.location.hash === "" &&
+        window.location.search.indexOf("?") !== 0 &&
+        document.referrer.indexOf("formsubmit.co") !== -1) {
       wasSentHere = true;
       successBanner.hidden = false;
       form.style.display = "none";
-      history.replaceState(null, "", window.location.pathname + window.location.search + "#contact");
       var card = form.closest(".contact-form");
       if (card) card.scrollIntoView({ behavior: "smooth", block: "center" });
     }
@@ -525,36 +527,11 @@
       statusEl.textContent = "Sending…";
       statusEl.className = "form-status";
 
-      // Try an AJAX POST first so the page doesn't reload. If the service
-      // isn't accepting yet (first-time setup), keep visitors here with a
-      // friendly message — never show technical pages. Otherwise fall back
-      // to a plain HTML POST, FormSubmit's most reliable delivery path.
-      e.preventDefault();
-      fetch(form.action.replace("formsubmit.co/", "formsubmit.co/ajax/"), {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Accept": "application/json" },
-        body: JSON.stringify({
-          name: name,
-          email: email,
-          message: message,
-          _subject: "New Portfolio Contact Message",
-          _template: "table",
-          _captcha: "false"
-        })
-      })
-        .then(function (res) { return res.ok ? res.json() : Promise.reject(); })
-        .then(function (data) {
-          if (data && (data.success === "true" || data.success === true)) {
-            showSuccess();
-          } else if (data && data.success === "false" && /activat/i.test(data.message || "")) {
-            showFailure(); // service warming up — stay on page, stay friendly
-          } else {
-            nativePost();
-          }
-        })
-        .catch(function () {
-          nativePost();
-        });
+      // The form is activated: submit natively (method=POST) straight to
+      // FormSubmit — the most reliable delivery path. FormSubmit then
+      // redirects the visitor back to the site (per _next), where the
+      // success banner greets them. Validation already passed above.
+      form.submit();
     });
   }
 
