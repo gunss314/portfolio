@@ -1,0 +1,8 @@
+# robots.txt — Gunasurya S portfolio
+# ➜ Replace the Sitemap URL if you deploy under a different
+#   domain or repository name (must match sitemap.xml).
+
+User-agent: *
+Allow: /
+
+Sitemap: https://gunss314.github.io/portfolio/sitemap.xml

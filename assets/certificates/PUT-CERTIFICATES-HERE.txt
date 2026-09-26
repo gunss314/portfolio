@@ -1,0 +1,17 @@
+This folder contains Gunasurya's REAL certificate images.
+
+Each certificate has:
+  <name>.jpg            → full-size image (opens in the lightbox)
+  <name>-thumb.jpg      → small card thumbnail
+  originals/<name>.pdf  → the original untouched PDF
+
+TO ADD A NEW CERTIFICATE:
+1. Put the file (JPG/PNG/PDF) in this folder (PDF originals go in originals/)
+2. Open js/certificates.js and add an entry:
+     title:  exactly as printed on the certificate
+     org:    only if printed on the certificate
+     date:   only if printed on the certificate
+     file:   "your-image.jpg"     (full-size, shown in lightbox)
+     thumb:  "your-image-thumb.jpg"
+     pdf:    "originals/your-file.pdf"  (or null if not available)
+3. Reload — the card, lightbox and download button are generated automatically.

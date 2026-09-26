@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gunasurya S — Digital Marketing, SEO &amp; Video Editing Portfolio</title>
+  <meta name="description" content="Portfolio of Gunasurya S — B.E. Computer Science student specializing in Digital Marketing, SEO, Social Media Marketing and Video Editing. Certified in Oracle Cloud, Semrush content marketing and complete digital marketing with AI." />
+  <meta name="author" content="Gunasurya S" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- ============================================================
+       CANONICAL URL — update after deploying:
+       GitHub Pages:  https://gunss314.github.io/portfolio/
+       Custom domain: https://your-domain.com  (then also update
+       sitemap.xml, robots.txt and the og:url / twitter:url tags)
+       ============================================================ -->
+  <link rel="canonical" href="https://gunss314.github.io/portfolio/" />
+
+  <!-- ---------- Open Graph (LinkedIn, Facebook, WhatsApp) ---------- -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Gunasurya S — Portfolio" />
+  <meta property="og:title" content="Gunasurya S — Digital Marketing, SEO &amp; Video Editing" />
+  <meta property="og:description" content="B.E. Computer Science student turning attention into engagement — SEO, social media marketing, content creation and cinematic video edits. View certifications, projects and video work." />
+  <meta property="og:url" content="https://gunss314.github.io/portfolio/" />
+  <meta property="og:image" content="assets/img/og-card.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Gunasurya S — Digital Marketing, SEO, Social Media Marketing and Video Editing portfolio" />
+  <meta property="og:locale" content="en_IN" />
+
+  <!-- ---------- Twitter / X card ---------- -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Gunasurya S — Digital Marketing, SEO &amp; Video Editing" />
+  <meta name="twitter:description" content="B.E. Computer Science student specializing in SEO, social media marketing and video editing. Certifications, projects and video work inside." />
+  <meta name="twitter:image" content="assets/img/og-card.png" />
+  <meta name="twitter:image:alt" content="Gunasurya S portfolio preview card" />
+
+  <!-- ---------- Icons & theme color ---------- -->
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="180x180" href="assets/img/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+  <meta name="theme-color" content="#05060f" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#eef1fb" media="(prefers-color-scheme: light)" />
+
+  <!-- ---------- Structured data (helps Google show rich results) ---------- -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Gunasurya S",
+    "jobTitle": "Digital Marketing & SEO Enthusiast",
+    "description": "B.E. Computer Science and Engineering student specializing in Digital Marketing, SEO, Social Media Marketing and Video Editing.",
+    "email": "mailto:gunss708@gmail.com",
+    "url": "https://gunss314.github.io/portfolio/",
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "Sasurie College of Engineering",
+      "address": { "@type": "PostalAddress", "addressLocality": "Tirupur", "addressRegion": "Tamil Nadu", "addressCountry": "IN" }
+    },
+    "address": { "@type": "PostalAddress", "addressLocality": "Tirupur", "addressRegion": "Tamil Nadu", "addressCountry": "IN" },
+    "knowsAbout": ["Digital Marketing", "SEO", "Social Media Marketing", "Video Editing", "Content Creation", "Google Ads", "Canva"],
+    "sameAs": [
+      "https://www.linkedin.com/in/g-gunss-",
+      "https://github.com/gunss314"
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- ======================= 3D BACKGROUND ======================= -->
+  <canvas id="bg3d" aria-hidden="true"></canvas>
+  <div id="bg-vignette" aria-hidden="true"></div>
+  <noscript>
+    <style>#bg3d{display:none}</style>
+    <div class="noscript-note">JavaScript is disabled — background animation hidden; all content still works.</div>
+  </noscript>
+
+  <!-- ======================= PRELOADER ======================= -->
+  <div id="preloader" aria-hidden="true">
+    <div class="preloader-ring"></div>
+    <span class="preloader-name">G S</span>
+  </div>
+
+  <!-- ======================= NAVBAR ======================= -->
+  <header id="navbar" class="navbar" role="banner">
+    <nav class="nav-inner" aria-label="Primary">
+      <a class="nav-logo" href="#home" aria-label="Gunasurya S — back to top">
+        <span class="logo-mark">G</span>
+        <span class="logo-text">Gunasurya<span class="accent">.S</span></span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#education" class="nav-link">Education</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#certifications" class="nav-link">Certifications</a></li>
+        <li><a href="#video-editing" class="nav-link">Video Editing</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle light / dark theme">
+          <svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <svg class="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <a class="btn btn-outline btn-sm nav-cta" href="#contact">Hire Me</a>
+        <button id="navToggle" class="icon-btn nav-burger" type="button" aria-label="Open navigation menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <div id="mobileMenu" class="mobile-menu" aria-hidden="true">
+    <ul>
+      <li><a href="#home" class="nav-link active">Home</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#education" class="nav-link">Education</a></li>
+      <li><a href="#skills" class="nav-link">Skills</a></li>
+      <li><a href="#projects" class="nav-link">Projects</a></li>
+      <li><a href="#certifications" class="nav-link">Certifications</a></li>
+      <li><a href="#video-editing" class="nav-link">Video Editing</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+  </div>
+
+  <main id="main">
+    <!-- ======================= HERO ======================= -->
+    <section id="home" class="section hero" data-nav="home">
+      <div class="hero-inner container">
+        <div class="hero-copy reveal">
+          <p class="hero-eyebrow"><span class="eyebrow-dot"></span> Available for internships, freelance &amp; collaborations</p>
+          <h1 class="hero-title">
+            Hi, I'm <span class="grad-text">Gunasurya&nbsp;S</span>
+          </h1>
+          <p class="hero-roles">
+            <span class="role-item">Digital Marketing</span>
+            <span class="role-sep">|</span>
+            <span class="role-item">SEO</span>
+            <span class="role-sep">|</span>
+            <span class="role-item">Social Media Marketing</span>
+            <span class="role-sep">|</span>
+            <span id="typed" class="typed"></span><span class="typed-caret" aria-hidden="true"></span>
+          </p>
+          <p class="hero-sub">
+            I help brands get seen — combining <strong>data-driven SEO</strong>, scroll-stopping
+            <strong>social content</strong> and cinematic <strong>video editing</strong> to turn attention
+            into engagement and growth.
+          </p>
+          <div class="hero-ctas">
+            <a href="#projects" class="btn btn-primary">
+              View My Work
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#contact" class="btn btn-ghost">Get In Touch</a>
+          </div>
+          <ul class="hero-stats" aria-label="Quick stats">
+            <li><strong>7+</strong><span>Certifications earned</span></li>
+            <li><strong>4</strong><span>Live practice projects</span></li>
+            <li><strong>2</strong><span>Years creating content</span></li>
+          </ul>
+        </div>
+
+        <div class="hero-visual reveal" aria-hidden="false">
+          <div class="avatar-frame">
+            <div class="avatar-ring"></div>
+            <div class="avatar-img" id="avatarImg">
+              <img src="assets/img/profile.jpg" alt="Gunasurya S" class="avatar-photo" />
+            </div>
+            <span class="float-chip chip-1">📈 SEO Growth</span>
+            <span class="float-chip chip-2">🎬 Video Edits</span>
+            <span class="float-chip chip-3">📱 Social Media</span>
+          </div>
+        </div>
+      </div>
+      <a href="#about" class="scroll-cue" aria-label="Scroll to About section"><span></span></a>
+    </section>
+
+    <!-- ======================= ABOUT ======================= -->
+    <section id="about" class="section" data-nav="about">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="section-tag">01 — About</span>
+          <h2 class="section-title">Turning curiosity into <span class="grad-text">clicks &amp; cameras</span></h2>
+          <p class="section-sub">A quick, honest snapshot of who I am and how I work.</p>
+        </header>
+        <div class="about-grid">
+          <div class="glass-card about-card reveal">
+            <h3>Hello, I'm Gunasurya 👋</h3>
+            <p>
+              I'm a <strong>B.E. Computer Science and Engineering</strong> student at
+              <strong>Sasurie College of Engineering, Tirupur</strong> with a genuine obsession for the
+              intersection of technology and attention: <em>why people click, watch, share and buy</em>.
+            </p>
+            <p>
+              My core interests are <strong>Digital Marketing, SEO, Social Media Marketing and Video
+              Editing</strong>. I've backed that interest with hands-on practice — running a sample brand
+              Instagram page, building an SEO blog to test what actually ranks, and editing videos that are
+              built for retention.
+            </p>
+            <p>
+              I'm currently open to <strong>internships, freelance work and collaborations</strong> where I
+              can apply marketing fundamentals, learn fast from real feedback loops, and deliver measurable
+              results.
+            </p>
+          </div>
+          <div class="about-side">
+            <div class="glass-card info-card reveal">
+              <h4>Quick facts</h4>
+              <ul class="facts">
+                <li><span>Education</span><b>B.E. Computer Science &amp; Engineering</b></li>
+                <li><span>College</span><b>Sasurie College of Engineering, Tirupur</b></li>
+                <li><span>Graduation</span><b>2027</b></li>
+                <li><span>Status</span><b>Student — open to work</b></li>
+                <li><span>Languages</span><b>Tamil (Native), English (Proficient)</b></li>
+                <li><span>Based in</span><b>Tirupur, Tamil Nadu, India</b></li>
+              </ul>
+            </div>
+            <div class="glass-card info-card reveal">
+              <h4>Strengths</h4>
+              <div class="chips">
+                <span class="chip">Quick Learner</span>
+                <span class="chip">Adaptable</span>
+                <span class="chip">Communication</span>
+                <span class="chip">Team Work</span>
+                <span class="chip">Keyword Research</span>
+                <span class="chip">Content Strategy</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= EDUCATION ======================= -->
+    <section id="education" class="section" data-nav="education">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="section-tag">02 — Education</span>
+          <h2 class="section-title">Academic <span class="grad-text">foundation</span></h2>
+          <p class="section-sub">Formal education and current status.</p>
+        </header>
+        <div class="edu-wrap">
+          <div class="glass-card edu-card reveal">
+            <div class="edu-rail" aria-hidden="true"><span class="edu-dot"></span></div>
+            <div class="edu-body">
+              <span class="edu-badge">Currently pursuing</span>
+              <h3>B.E. Computer Science and Engineering</h3>
+              <p class="edu-inst">Sasurie College of Engineering — Tirupur, Tamil Nadu</p>
+              <p class="edu-meta">Expected graduation: <b>2027</b></p>
+              <p class="edu-desc">
+                Building strong programming and problem-solving fundamentals while specializing my
+                self-learning in digital marketing, SEO and content creation.
+              </p>
+            </div>
+          </div>
+          <div class="glass-card edu-card reveal">
+            <div class="edu-rail" aria-hidden="true"><span class="edu-dot dim"></span></div>
+            <div class="edu-body">
+              <span class="edu-badge past">Completed 2022 – 2023</span>
+              <h3>HSC — Class XII</h3>
+              <p class="edu-inst">Government Higher Secondary School, Iduvampalayam, Tirupur</p>
+              <p class="edu-meta">Scored <b>83.2%</b></p>
+            </div>
+          </div>
+          <div class="glass-card edu-card reveal">
+            <div class="edu-rail" aria-hidden="true"><span class="edu-dot dim"></span></div>
+            <div class="edu-body">
+              <span class="edu-badge past">Completed 2021</span>
+              <h3>SSLC — Class X</h3>
+              <p class="edu-inst">Government Higher Secondary School, Iduvampalayam, Tirupur</p>
+            </div>
+ </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= SKILLS ======================= -->
+    <section id="skills" class="section" data-nav="skills">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="section-tag">03 — Skills</span>
+          <h2 class="section-title">My <span class="grad-text">toolkit</span></h2>
+          <p class="section-sub">Skills I actively practice through projects, courses and self-learning.</p>
+        </header>
+        <div class="skills-grid">
+          <article class="glass-card skill-card reveal">
+            <div class="skill-icon si-dm">📣</div>
+            <h3>Digital Marketing</h3>
+            <p>Campaign thinking end-to-end: audience, offer, channel and measurement.</p>
+            <div class="skill-bar"><span style="--lvl:80%"></span></div>
+            <span class="skill-lvl">Core skill</span>
+          </article>
+          <article class="glass-card skill-card reveal">
+            <div class="skill-icon si-seo">🔍</div>
+            <h3>SEO</h3>
+            <p>Keyword research, on-page SEO, meta tags, headings and search visibility.</p>
+            <div class="skill-bar"><span style="--lvl:78%"></span></div>
+            <span class="skill-lvl">Core skill</span>
+          </article>
+          <article class="glass-card skill-card reveal">
+            <div class="skill-icon si-smm">📱</div>
+            <h3>Social Media Marketing</h3>
+            <p>Content calendars, hashtag strategy and community engagement.</p>
+            <div class="skill-bar"><span style="--lvl:80%"></span></div>
+            <span class="skill-lvl">Core skill</span>
+          </article>
+          <article class="glass-card skill-card reveal">
+            <div class="skill-icon si-cc">✍️</div>
+            <h3>Content Creation</h3>
+            <p>Blog writing and short-form copy that hooks and retains attention.</p>
+            <div class="skill-bar"><span style="--lvl:75%"></span></div>
+            <span class="skill-lvl">Strong</span>
+          </article>
+          <article class="glass-card skill-card reveal">
+            <div class="skill-icon si-canva">🎨</div>
+            <h3>Canva</h3>
+            <p>Post design, thumbnails, carousels and brand-consistent creatives.</p>
+            <div class="skill-bar"><span style="--lvl:85%"></span></div>
+            <span class="skill-lvl">Daily driver</span>
+          </article>
+          <article class="glass-card skill-card reveal">
+            <div class="skill-icon si-ads">📊</div>
+            <h3>Google Ads</h3>
+            <p>Campaign structure, keyword targeting and performance measurement basics.</p>
+            <div class="skill-bar"><span style="--lvl:65%"></span></div>
+            <span class="skill-lvl">Learning</span>
+          </article>
+          <article class="glass-card skill-card reveal">
+            <div class="skill-icon si-ve">🎬</div>
+            <h3>Video Editing</h3>
+            <p>Reels &amp; short edits: cuts, captions, color and sound for retention.</p>
+            <div class="skill-bar"><span style="--lvl:80%"></span></div>
+            <span class="skill-lvl">Core skill</span>
+          </article>
+          <article class="glass-card skill-card reveal">
+            <div class="skill-icon si-excel">📈</div>
+            <h3>MS Excel</h3>
+            <p>Keyword tracking sheets, content calendars and reporting.</p>
+            <div class="skill-bar"><span style="--lvl:70%"></span></div>
+            <span class="skill-lvl">Working knowledge</span>
+          </article>
+          <article class="glass-card skill-card reveal">
+            <div class="skill-icon si-code">💻</div>
+            <h3>HTML / CSS / JavaScript</h3>
+            <p>Basics from my CSE degree — enough to build and tweak web pages like this one.</p>
+            <div class="skill-bar"><span style="--lvl:55%"></span></div>
+            <span class="skill-lvl">Basics</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= PROJECTS ======================= -->
+    <section id="projects" class="section" data-nav="projects">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="section-tag">04 — Projects</span>
+          <h2 class="section-title">Practice <span class="grad-text">projects</span></h2>
+        </header>
+        <div class="projects-grid">
+          <article class="glass-card project-card reveal">
+            <div class="project-media">
+              <img src="assets/img/project-instagram.svg" alt="Preview graphic for the Trendify Hub Instagram marketing project" loading="lazy" />
+              <div class="project-overlay">
+                <span class="overlay-badge">Instagram Marketing</span>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3>Trendify Hub — Instagram Marketing Project</h3>
+              <p>
+                Created and managed a sample business Instagram page (“Trendify Hub”). Designed engaging
+                posts with Canva and applied hashtag + content strategies to improve reach and engagement
+                through consistent posting.
+              </p>
+              <ul class="tags">
+                <li>Instagram</li><li>Canva</li><li>Hashtag Strategy</li><li>Content Planning</li>
+              </ul>
+              <div class="project-foot">
+                <span class="btn btn-outline btn-sm is-disabled" aria-disabled="true" title="Live link available on request">View Project</span>
+                <span class="proj-note">Practice project</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="glass-card project-card reveal">
+            <div class="project-media">
+              <img src="assets/img/project-seo-blog.svg" alt="Preview graphic for the SEO blog project" loading="lazy" />
+              <div class="project-overlay">
+                <span class="overlay-badge">SEO / Blog</span>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3>SEO Blog Project</h3>
+              <p>
+                Built an SEO-optimized blog website to practice SEO techniques — performed keyword research,
+                optimized content and applied on-page SEO (titles, meta descriptions, headings) to improve
+                search visibility.
+              </p>
+              <ul class="tags">
+                <li>Keyword Research</li><li>On-Page SEO</li><li>Blog Writing</li><li>HTML/CSS</li>
+              </ul>
+              <div class="project-foot">
+                <span class="btn btn-outline btn-sm is-disabled" aria-disabled="true" title="Link coming soon">View Project</span>
+                <span class="proj-note">Practice project</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= CERTIFICATIONS ======================= -->
+    <section id="certifications" class="section" data-nav="certifications">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="section-tag">05 — Certifications</span>
+          <h2 class="section-title">Verified <span class="grad-text">credentials</span></h2>
+          <p class="section-sub">Click any certificate to view it full-screen — zoom in to read every detail. Original PDFs included.</p>
+        </header>
+        <div id="certGrid" class="certs-grid">
+          <!-- Certificate cards are rendered by js/main.js from the real files in assets/certificates/ -->
+        </div>
+        <p class="cert-note reveal">
+          Adding new certificates? Drop the file into <code>assets/certificates/</code> and register it in
+          <code>js/certificates.js</code> — the card, preview and lightbox are generated automatically.
+        </p>
+      </div>
+    </section>
+
+    <!-- ======================= VIDEO EDITING ======================= -->
+    <section id="video-editing" class="section" data-nav="video-editing">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="section-tag">06 — Video Editing</span>
+          <h2 class="section-title">Behind the <span class="grad-text">timeline</span></h2>
+          <p class="section-sub">Edits built for retention — cuts, captions, color and sound.</p>
+        </header>
+
+        <div class="ve-grid">
+          <article class="glass-card ve-card reveal">
+            <button class="ve-thumb" type="button" data-video="reel-1" aria-label="Play showcase reel 1">
+              <img src="assets/img/ve-reel-1.svg" alt="Thumbnail placeholder for showcase reel 1" loading="lazy" />
+              <span class="ve-play" aria-hidden="true">▶</span>
+              <span class="ve-dur">0:28</span>
+            </button>
+            <div class="ve-body">
+              <h3>Instagram Reel Edit</h3>
+              <p>Fast cuts, beat-synced transitions and animated subtitles for maximum retention.</p>
+              <ul class="tags"><li>Premiere Pro</li><li>Subtitles</li><li>Social Edit</li></ul>
+            </div>
+          </article>
+
+          <article class="glass-card ve-card reveal">
+            <button class="ve-thumb" type="button" data-video="reel-2" aria-label="Play showcase reel 2">
+              <img src="assets/img/ve-reel-2.svg" alt="Thumbnail placeholder for showcase reel 2" loading="lazy" />
+              <span class="ve-play" aria-hidden="true">▶</span>
+              <span class="ve-dur">0:45</span>
+            </button>
+            <div class="ve-body">
+              <h3>Promo / Product Edit</h3>
+              <p>Promo-style edit with motion graphics, logo animation and color correction.</p>
+              <ul class="tags"><li>DaVinci Resolve</li><li>Motion Graphics</li><li>Color Correction</li></ul>
+            </div>
+          </article>
+
+          <article class="glass-card ve-card reveal">
+            <button class="ve-thumb" type="button" data-video="reel-3" aria-label="Play showcase reel 3">
+              <img src="assets/img/ve-reel-3.svg" alt="Thumbnail placeholder for showcase reel 3" loading="lazy" />
+              <span class="ve-play" aria-hidden="true">▶</span>
+              <span class="ve-dur">1:00</span>
+            </button>
+            <div class="ve-body">
+              <h3>YouTube Long-Form Edit</h3>
+              <p>Structured long-form edit — jump cuts, B-roll, titles and sound design.</p>
+              <ul class="tags"><li>Premiere Pro</li><li>Sound Design</li><li>YouTube</li></ul>
+            </div>
+          </article>
+        </div>
+
+        <div class="ve-skills glass-card reveal">
+          <h3>Editing toolkit</h3>
+          <div class="ve-skills-grid">
+            <div class="ve-skill"><span class="vs-ico">🎞️</span><b>Premiere Pro</b><i>Cuts, transitions, audio</i></div>
+            <div class="ve-skill"><span class="vs-ico">🎨</span><b>DaVinci Resolve</b><i>Color correction &amp; grading</i></div>
+            <div class="ve-skill"><span class="vs-ico">✨</span><b>Motion Graphics</b><i>Titles, reveals, keyframes</i></div>
+            <div class="ve-skill"><span class="vs-ico">💬</span><b>Subtitles</b><i>Styled captions &amp; SRTs</i></div>
+            <div class="ve-skill"><span class="vs-ico">🌈</span><b>Color Correction</b><i>Balanced, cinematic looks</i></div>
+            <div class="ve-skill"><span class="vs-ico">📲</span><b>Social Video</b><i>Reels, Shorts, aspect ratios</i></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= CONTACT ======================= -->
+    <section id="contact" class="section" data-nav="contact">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="section-tag">07 — Contact</span>
+          <h2 class="section-title">Let's build something <span class="grad-text">worth watching</span></h2>
+          <p class="section-sub">Open to internships, freelance projects and collaborations. I reply within a day.</p>
+        </header>
+
+        <div class="contact-grid">
+          <div class="contact-info">
+            <a class="glass-card contact-card reveal" href="mailto:gunss708@gmail.com">
+              <span class="c-ico">✉️</span>
+              <div><h4>Email</h4><p>gunss708@gmail.com</p></div>
+            </a>
+            <a class="glass-card contact-card reveal" href="https://www.linkedin.com/in/g-gunss-" target="_blank" rel="noopener">
+              <span class="c-ico">💼</span>
+              <div><h4>LinkedIn</h4><p>linkedin.com/in/g-gunss-</p></div>
+            </a>
+            <a class="glass-card contact-card reveal" href="https://github.com/gunss314/gunss" target="_blank" rel="noopener">
+              <span class="c-ico">🐙</span>
+              <div><h4>GitHub</h4><p>github.com/gunss314</p></div>
+            </a>
+            <div class="glass-card contact-card contact-card-static reveal">
+              <span class="c-ico">📞</span>
+              <div><h4>Phone</h4><p>+91 96779 33577</p></div>
+            </div>
+          </div>
+
+          <form id="contactForm" class="glass-card contact-form reveal" novalidate>
+            <h3>Send a message</h3>
+            <p class="form-note">This is a static portfolio — the form opens your email app with everything pre-filled.</p>
+            <div class="field-row">
+              <label class="field">
+                <span>Name</span>
+                <input type="text" name="name" placeholder="Your name" required autocomplete="name" />
+              </label>
+              <label class="field">
+                <span>Email</span>
+                <input type="email" name="email" placeholder="you@example.com" required autocomplete="email" />
+              </label>
+            </div>
+            <label class="field">
+              <span>Message</span>
+              <textarea name="message" rows="5" placeholder="Tell me about your project or role…" required></textarea>
+            </label>
+            <button type="submit" class="btn btn-primary btn-block">
+              Send Message
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg>
+            </button>
+            <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+
+        <footer class="site-footer">
+          <p>© <span id="year">2026</span> Gunasurya S — Built with HTML, CSS, JavaScript &amp; Three.js</p>
+          <div class="footer-links">
+            <a href="mailto:gunss708@gmail.com" aria-label="Email">✉️</a>
+            <a href="https://www.linkedin.com/in/g-gunss-" target="_blank" rel="noopener" aria-label="LinkedIn">💼</a>
+            <a href="https://github.com/gunss314/gunss" target="_blank" rel="noopener" aria-label="GitHub">🐙</a>
+          </div>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======================= MODALS ======================= -->
+  <div id="certModal" class="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Certificate viewer">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="lightbox-panel">
+      <header class="lightbox-head">
+        <div class="lh-text">
+          <h3 id="certModalTitle">Certificate</h3>
+          <p id="certModalMeta"></p>
+        </div>
+        <div class="lh-actions">
+          <div class="zoom-controls">
+            <button class="icon-btn" id="zoomOut" type="button" aria-label="Zoom out">−</button>
+            <span id="zoomLevel">100%</span>
+            <button class="icon-btn" id="zoomIn" type="button" aria-label="Zoom in">+</button>
+            <button class="icon-btn" id="zoomReset" type="button" aria-label="Reset zoom">⟲</button>
+          </div>
+          <button class="icon-btn lb-close" id="lbClose" type="button" data-close-modal aria-label="Close certificate view">✕</button>
+        </div>
+      </header>
+      <div class="lightbox-stage" id="lbStage">
+        <button class="lb-nav lb-prev" id="lbPrev" type="button" aria-label="Previous certificate">‹</button>
+        <div class="lb-canvas" id="lbCanvas"></div>
+        <button class="lb-nav lb-next" id="lbNext" type="button" aria-label="Next certificate">›</button>
+      </div>
+      <footer class="lightbox-foot">
+        <span class="lb-hint" id="lbHint">Scroll to zoom · drag to pan · double-click to toggle 1:1</span>
+        <div class="lb-foot-actions">
+          <a id="certOpenNewTab" class="btn btn-outline btn-sm" href="#" target="_blank" rel="noopener">Open original</a>
+          <a id="certDownload" class="btn btn-primary btn-sm" href="#" download>Download</a>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <div id="videoModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Video player">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-panel modal-panel-video">
+      <button class="modal-close icon-btn" type="button" data-close-modal aria-label="Close video player">✕</button>
+      <div class="modal-body-video">
+        <div class="video-placeholder">
+          <span class="vp-ico">🎬</span>
+          <h4>Video coming soon</h4>
+          <p>Real edited videos will be embedded here. This preview slot is wired and ready.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button id="toTop" class="to-top icon-btn" type="button" aria-label="Back to top">↑</button>
+
+  <script src="vendor/three.min.js"></script>
+  <script src="js/certificates.js"></script>
+  <script src="js/three-bg.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

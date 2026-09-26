@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" font-family="Sora, Segoe UI, sans-serif">
+  <defs>
+    <linearGradient id="vb2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#031f2b"/>
+      <stop offset="0.55" stop-color="#0a0c1b"/>
+      <stop offset="1" stop-color="#26102e"/>
+    </linearGradient>
+    <linearGradient id="wheel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ff5ca8"/>
+      <stop offset="0.5" stop-color="#ffcc66"/>
+      <stop offset="1" stop-color="#00e0c6"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#vb2)"/>
+  <!-- color wheel -->
+  <circle cx="600" cy="200" r="130" fill="none" stroke="url(#wheel)" stroke-width="26" opacity="0.9"/>
+  <circle cx="600" cy="200" r="86" fill="#0a0c1b" stroke="#ffffff" stroke-opacity="0.15" stroke-width="2"/>
+  <circle cx="600" cy="200" r="30" fill="url(#wheel)" opacity="0.9"/>
+  <!-- scopes -->
+  <g transform="translate(80,120)">
+    <rect x="0" y="0" width="300" height="160" rx="14" fill="#0d0f22" stroke="#ffffff" stroke-opacity="0.18" stroke-width="2"/>
+    <polyline points="20,120 70,80 110,100 160,50 210,90 280,40" fill="none" stroke="#00e0c6" stroke-width="4" stroke-linecap="round"/>
+    <polyline points="20,135 70,110 110,120 160,90 210,115 280,80" fill="none" stroke="#ff5ca8" stroke-width="3" opacity="0.7" stroke-linecap="round"/>
+    <text x="20" y="34" font-size="15" fill="#9aa0c0" font-weight="600">RGB SCOPE</text>
+  </g>
+  <g font-weight="800">
+    <text x="80" y="360" font-size="30" fill="#ffffff">Grade like cinema</text>
+  </g>
+  <text x="80" y="392" font-size="15" fill="#9aa0c0">DaVinci Resolve · color correction · promo edits</text>
+</svg>

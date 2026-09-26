@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ============================================================
+     SITEMAP — Gunasurya S portfolio
+     Single-page site: sections are anchor routes on the one URL.
+     ➜ If you deploy to a custom domain or a different repo name,
+       replace the <loc> value below to match (must equal the
+       canonical URL in index.html).
+     ============================================================ -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://gunss314.github.io/portfolio/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://gunss314.github.io/portfolio/#certifications</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gunss314.github.io/portfolio/#projects</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gunss314.github.io/portfolio/#video-editing</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gunss314.github.io/portfolio/#contact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+</urlset>
