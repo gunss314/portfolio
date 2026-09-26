@@ -469,18 +469,20 @@
     var successBanner = $("#contact-form-success");
     var wasSentHere = false;
 
-    // FormSubmit's _next sends the visitor back to the site root after a
-    // successful, genuinely delivered POST. Detect that homecoming (fresh
-    // load, no ?v= cache-buster in the URL) and greet them with the banner.
-    if (successBanner && window.location.hash === "" &&
-        window.location.search.indexOf("?") !== 0 &&
-        document.referrer.indexOf("formsubmit.co") !== -1) {
-      wasSentHere = true;
-      successBanner.hidden = false;
-      form.style.display = "none";
-      var card = form.closest(".contact-form");
-      if (card) card.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
+    // FormSubmit's _next returns the visitor to the site after a successful,
+    // genuinely delivered POST. The return trip is detected via a session
+    // flag set at submit time (referrer headers are stripped by redirects,
+    // so they can't be trusted here).
+    try {
+      if (successBanner && sessionStorage.getItem("gs_form_sent") === "1") {
+        sessionStorage.removeItem("gs_form_sent");
+        wasSentHere = true;
+        successBanner.hidden = false;
+        form.style.display = "none";
+        var card = form.closest(".contact-form");
+        if (card) card.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    } catch (e) { /* private mode — banner simply won't show after redirect */ }
 
     function showSuccess() {
       setBtnState("sent");
@@ -531,6 +533,7 @@
       // FormSubmit — the most reliable delivery path. FormSubmit then
       // redirects the visitor back to the site (per _next), where the
       // success banner greets them. Validation already passed above.
+      try { sessionStorage.setItem("gs_form_sent", "1"); } catch (e) {}
       form.submit();
     });
   }
