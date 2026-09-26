@@ -442,22 +442,16 @@
     }
   });
 
-  /* ================= CONTACT FORM ================= */
+  /* ================= CONTACT FORM =================
+     Plain HTML POST to FormSubmit (method="POST", action in markup).
+     JS handles only: client-side validation, duplicate-submit guard,
+     and the success banner shown when FormSubmit redirects back via
+     _next. No fetch/AJAX anywhere - the browser submits natively. */
   var form = $("#contactForm");
   if (form) {
     var sendBtn = $("#sendBtn");
     var statusEl = $("#formStatus");
-    var sending = false;
-
-    function setBtnState(state) {
-      sendBtn.classList.toggle("is-loading", state === "sending");
-      sendBtn.disabled = state === "sending";
-      sendBtn.setAttribute("aria-busy", state === "sending" ? "true" : "false");
-      var label = sendBtn.querySelector("span.btn-label");
-      if (label) label.textContent =
-        state === "sending" ? "Sending…" :
-        state === "sent" ? "Sent ✓" : "Send Message";
-    }
+    var submitting = false;
 
     function markInvalid(el) {
       el.classList.add("invalid");
@@ -467,46 +461,22 @@
     }
 
     var successBanner = $("#contact-form-success");
-    var wasSentHere = false;
 
     // FormSubmit's _next returns the visitor to the site after a successful,
     // genuinely delivered POST. The return trip is detected via a session
-    // flag set at submit time (referrer headers are stripped by redirects,
-    // so they can't be trusted here).
+    // flag set at submit time (referrer headers are stripped by redirects).
     try {
       if (successBanner && sessionStorage.getItem("gs_form_sent") === "1") {
         sessionStorage.removeItem("gs_form_sent");
-        wasSentHere = true;
         successBanner.hidden = false;
         form.style.display = "none";
         var card = form.closest(".contact-form");
         if (card) card.scrollIntoView({ behavior: "smooth", block: "center" });
       }
-    } catch (e) { /* private mode — banner simply won't show after redirect */ }
-
-    function showSuccess() {
-      setBtnState("sent");
-      statusEl.textContent = "";
-      if (successBanner) successBanner.hidden = false;
-      form.reset();
-      setTimeout(function () { setBtnState("idle"); sending = false; }, 3500);
-    }
-    function showFailure() {
-      sending = false;
-      setBtnState("idle");
-      statusEl.textContent = "Unable to send the message. Please try again.";
-      statusEl.className = "form-status err";
-    }
-
-    function nativePost() {
-      // Real HTML POST to FormSubmit (its fully supported flow).
-      // _next redirects back to this section, where the success banner shows.
-      form.submit();
-    }
+    } catch (e) { /* storage unavailable - banner simply won't show */ }
 
     form.addEventListener("submit", function (e) {
-      if (wasSentHere) { e.preventDefault(); return; }
-      if (sending) { e.preventDefault(); return; }
+      if (submitting) { e.preventDefault(); return; }
 
       var name = form.name.value.trim();
       var email = form.email.value.trim();
@@ -524,17 +494,15 @@
         return;
       }
 
-      sending = true;
-      setBtnState("sending");
-      statusEl.textContent = "Sending…";
+      // Valid: let the browser perform the native POST to FormSubmit.
+      // Guard against double-clicks during the network round-trip.
+      submitting = true;
+      sendBtn.disabled = true;
+      statusEl.textContent = "Sending...";
       statusEl.className = "form-status";
-
-      // The form is activated: submit natively (method=POST) straight to
-      // FormSubmit — the most reliable delivery path. FormSubmit then
-      // redirects the visitor back to the site (per _next), where the
-      // success banner greets them. Validation already passed above.
-      try { sessionStorage.setItem("gs_form_sent", "1"); } catch (e) {}
-      form.submit();
+      try { sessionStorage.setItem("gs_form_sent", "1"); } catch (err) {}
+      // no preventDefault - the native POST proceeds; FormSubmit then
+      // redirects to the portfolio URL where the banner greets the visitor.
     });
   }
 
