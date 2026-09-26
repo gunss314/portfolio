@@ -441,6 +441,21 @@ h1, h2, h3, h4, .logo-text, .hero-title { font-family: "Sora", "Inter", sans-ser
 .form-status.err { color: var(--accent-3); }
 .form-status a { color: var(--accent-2); text-decoration: underline; text-underline-offset: 3px; }
 .hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.form-success-banner {
+  display: flex; align-items: center; gap: 14px; margin-top: 16px; padding: 16px 18px;
+  border-radius: 14px; border: 1px solid color-mix(in srgb, var(--accent-2) 40%, transparent);
+  background: color-mix(in srgb, var(--accent-2) 10%, transparent);
+  animation: bannerIn 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.form-success-banner[hidden] { display: none; }
+.form-success-banner .fsb-ico {
+  flex-shrink: 0; width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--accent-2); color: #04211e; font-weight: 800; font-size: 1.15rem;
+  box-shadow: 0 0 22px color-mix(in srgb, var(--accent-2) 55%, transparent);
+}
+.form-success-banner strong { display: block; color: var(--text-hi); font-size: 0.95rem; }
+.form-success-banner small { color: var(--text-lo); font-size: 0.8rem; }
+@keyframes bannerIn { from { opacity: 0; transform: translateY(10px) scale(0.98); } to { opacity: 1; transform: none; } }
 .btn.is-loading { opacity: 0.75; cursor: wait; }
 .btn.is-loading svg { animation: btnSendSpin 1s linear infinite; }
 @keyframes btnSendSpin { to { transform: rotate(360deg); } }

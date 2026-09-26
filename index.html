@@ -69,7 +69,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=1.1" />
+  <link rel="stylesheet" href="css/style.css?v=1.2" />
 </head>
 <body>
   <!-- ======================= 3D BACKGROUND ======================= -->
@@ -532,14 +532,15 @@
             </div>
           </div>
 
-          <form id="contactForm" class="glass-card contact-form reveal" action="https://formsubmit.co/ajax/gunss708@gmail.com" method="POST" novalidate>
+          <form id="contactForm" class="glass-card contact-form reveal" action="https://formsubmit.co/gunss708@gmail.com" method="POST" novalidate>
             <h3>Send a message</h3>
             <p class="form-note">Have an opportunity, project, or just want to say hi? Drop a message.</p>
             <!-- honeypot (spam trap — humans never see or fill this) -->
             <input type="text" name="_honey" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
-            <input type="hidden" name="_subject" value="New portfolio message — Gunasurya S" />
+            <input type="hidden" name="_subject" value="New Portfolio Contact Message" />
             <input type="hidden" name="_template" value="table" />
             <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_next" value="https://gunss314.github.io/portfolio/#contact-form-success" />
             <div class="field-row">
               <label class="field">
                 <span>Name</span>
@@ -559,6 +560,13 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg>
             </button>
             <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
+            <div id="contact-form-success" class="form-success-banner" hidden>
+              <span class="fsb-ico">✓</span>
+              <div>
+                <strong>Message sent successfully! I'll get back to you soon.</strong>
+                <small>Thank you for reaching out.</small>
+              </div>
+            </div>
           </form>
         </div>
 
@@ -627,6 +635,6 @@
   <script src="vendor/three.min.js"></script>
   <script src="js/certificates.js"></script>
   <script src="js/three-bg.js"></script>
-  <script src="js/main.js?v=1.3"></script>
+  <script src="js/main.js?v=1.5"></script>
 </body>
 </html>
