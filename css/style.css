@@ -439,6 +439,12 @@ h1, h2, h3, h4, .logo-text, .hero-title { font-family: "Sora", "Inter", sans-ser
 .form-status { margin-top: 14px; font-size: 0.86rem; min-height: 1.2em; }
 .form-status.ok { color: var(--accent-2); }
 .form-status.err { color: var(--accent-3); }
+.form-status a { color: var(--accent-2); text-decoration: underline; text-underline-offset: 3px; }
+.hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.btn.is-loading { opacity: 0.75; cursor: wait; }
+.btn.is-loading svg { animation: btnSendSpin 1s linear infinite; }
+@keyframes btnSendSpin { to { transform: rotate(360deg); } }
+.btn[disabled] { pointer-events: none; }
 
 /* ---------- Footer ---------- */
 .site-footer { margin-top: 70px; padding-top: 28px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; }

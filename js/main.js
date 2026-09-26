@@ -442,37 +442,105 @@
     }
   });
 
-  /* ================= CONTACT FORM ================= */
+  /* ================= CONTACT FORM (FormSubmit AJAX) ================= */
   var form = $("#contactForm");
   if (form) {
+    var sendBtn = $("#sendBtn");
+    var statusEl = $("#formStatus");
+    var sending = false;
+
+    function setBtnState(state) {
+      sendBtn.classList.toggle("is-loading", state === "sending");
+      sendBtn.disabled = state === "sending";
+      sendBtn.setAttribute("aria-busy", state === "sending" ? "true" : "false");
+      var label = sendBtn.querySelector("span.btn-label");
+      if (label) label.textContent =
+        state === "sending" ? "Sending…" :
+        state === "sent" ? "Sent ✓" : "Send Message";
+    }
+
+    function markInvalid(el) {
+      el.classList.add("invalid");
+      var clear = function () { el.classList.remove("invalid"); el.removeEventListener("input", clear); };
+      el.addEventListener("input", clear);
+      setTimeout(function () { el.classList.remove("invalid"); }, 3000);
+    }
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      var status = $("#formStatus");
+      if (sending) return;
+
       var name = form.name.value.trim();
       var email = form.email.value.trim();
       var message = form.message.value.trim();
-
       var valid = true;
-      if (!name) { mark(form.name); valid = false; }
-      if (!email || email.indexOf("@") < 1) { mark(form.email); valid = false; }
-      if (!message) { mark(form.message); valid = false; }
-      function mark(el) { el.classList.add("invalid"); setTimeout(function () { el.classList.remove("invalid"); }, 2500); }
+
+      if (name.length < 2) { markInvalid(form.name); valid = false; }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { markInvalid(form.email); valid = false; }
+      if (message.length < 10) { markInvalid(form.message); valid = false; }
+
       if (!valid) {
-        status.textContent = "Please fill in all fields with a valid email.";
-        status.className = "form-status err";
+        statusEl.textContent = "Please fill in all fields — name, a valid email, and a message (min 10 characters).";
+        statusEl.className = "form-status err";
         return;
       }
 
-      var subject = encodeURIComponent("Portfolio contact from " + name);
-      var bodyLines = encodeURIComponent(
-        "Name: " + name + "\nEmail: " + email + "\n\n" + message
-      );
-      window.location.href =
-        "mailto:gunss708@gmail.com?subject=" + subject + "&body=" + bodyLines;
+      sending = true;
+      setBtnState("sending");
+      statusEl.textContent = "Sending your message…";
+      statusEl.className = "form-status";
 
-      status.textContent = "Opening your email app — your message is pre-filled. Thank you!";
-      status.className = "form-status ok";
-      form.reset();
+      var payload = {
+        name: name,
+        email: email,
+        message: message,
+        _subject: "New portfolio message from " + name,
+        _template: "table",
+        _captcha: "false"
+      };
+
+      fetch(form.action, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(payload)
+      })
+        .then(function (res) {
+          if (!res.ok) throw new Error("HTTP " + res.status);
+          return res.json();
+        })
+        .then(function (data) {
+          if (data && data.success === "false" && /activat/i.test(data.message || "")) {
+            throw new Error("ACTIVATION_REQUIRED");
+          }
+          if (data && (data.success === "true" || data.success === true)) {
+            setBtnState("sent");
+            statusEl.innerHTML = "✅ <strong>Message sent successfully!</strong> Thanks, " +
+              name.split(" ")[0].replace(/[<>&]/g, "") +
+              " — I'll get back to you at <b>" + email.replace(/[<>&]/g, "") + "</b> soon.";
+            statusEl.className = "form-status ok";
+            form.reset();
+            setTimeout(function () { setBtnState("idle"); sending = false; }, 3500);
+          } else {
+            throw new Error("Service rejected the message");
+          }
+        })
+        .catch(function (err) {
+          sending = false;
+          setBtnState("idle");
+          if (err && err.message === "ACTIVATION_REQUIRED") {
+            statusEl.innerHTML = "📮 <strong>One-time setup needed:</strong> FormSubmit just emailed " +
+              "<b>gunss708@gmail.com</b> an “Activate Form” link. Click it once — after that this form sends messages directly to your inbox.";
+            statusEl.className = "form-status err";
+            return;
+          }
+          statusEl.innerHTML = "⚠️ Couldn't send automatically — no worries. " +
+            '<a href="mailto:gunss708@gmail.com?subject=' + encodeURIComponent("Portfolio contact from " + name) +
+            '">Click here to email me directly</a> instead.';
+          statusEl.className = "form-status err";
+        });
     });
   }
 
